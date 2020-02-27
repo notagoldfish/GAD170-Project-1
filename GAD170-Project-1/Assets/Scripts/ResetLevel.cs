@@ -14,5 +14,9 @@ public class ResetLevel : MonoBehaviour
     void Update()
     {
         if( Input.GetKeyDown( KeyCode.Escape ) == true ){ SceneManager.LoadScene( 0 ); }
+      //  if(Input.GetKeyDown(KeyCode.BackSpace) == true)
+       // {
+
+        //}
     }
 }
