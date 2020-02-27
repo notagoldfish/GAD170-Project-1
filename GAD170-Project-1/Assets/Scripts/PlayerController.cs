@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     public float xp = 0;
     public float xpForNextLevel = 5;
-    public int level = 0;
+    public int level = 1;
 
     public float currentMoveSpeed;
     public float currentTurnSpeed;
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
     void SetXpForNextLevel()
     {
-        xpForNextLevel = (5f + (level * level * 0.1f));
+        xpForNextLevel = (5f + (level * level * 5f));
         Debug.Log("xpForNextLevel" + xpForNextLevel);
     }
 
@@ -88,6 +88,10 @@ public class PlayerController : MonoBehaviour
         {
             GainXP(5);
         }
+        if (target.tag == "Goal")
+        {
+            GainXP(20);
+        }
     }
     
 
@@ -113,6 +117,12 @@ public class PlayerController : MonoBehaviour
         if( Input.GetKey( KeyCode.Space ) == true && Mathf.Abs( this.GetComponent<Rigidbody>().velocity.y ) < 0.01f )
         {
             this.GetComponent<Rigidbody>().velocity += Vector3.up * this.currentJumpHeight;
+        }
+
+        //Win
+        if (level > 2)
+        {
+            Debug.Log("Win");
         }
 
 
