@@ -24,9 +24,6 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter( Collider other )
     {
-        if (other.gameObject.tag == "Ball")
-        {
-            Destroy(this.gameObject);
-        }
+        Destroy(this.gameObject);
     }
 }
