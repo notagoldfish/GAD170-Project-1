@@ -51,3 +51,7 @@ public class MovingPlatform : MonoBehaviour
         other.transform.parent = null;
     }
 }
+
+/* Psuedocode
+ * 
+*/

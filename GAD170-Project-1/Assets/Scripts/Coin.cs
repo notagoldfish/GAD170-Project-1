@@ -27,3 +27,10 @@ public class Coin : MonoBehaviour
         Destroy(this.gameObject);
     }
 }
+
+/* Pseudocode
+ * Begin
+ * Input speed for spinSpeed
+ * Rotate object on z axis by the spinSpeed
+ * When colliding with other objects delete current object
+*/

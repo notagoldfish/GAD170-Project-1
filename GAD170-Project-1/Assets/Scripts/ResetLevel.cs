@@ -14,9 +14,12 @@ public class ResetLevel : MonoBehaviour
     void Update()
     {
         if( Input.GetKeyDown( KeyCode.Escape ) == true ){ SceneManager.LoadScene( 0 ); }
-      //  if(Input.GetKeyDown(KeyCode.BackSpace) == true)
-       // {
 
-        //}
     }
 }
+
+/* Pseudocode
+ * Begin
+ * If Escape key is pressed
+ * Load from scene manager scene 0
+*/

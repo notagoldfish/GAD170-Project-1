@@ -104,14 +104,13 @@ public class PlayerController : MonoBehaviour
         {
             LevelUp();
         }
-        if (Input.GetKeyDown(KeyCode.X) == true) { GainXP(1); }
         // Check up and down keys to move forwards or backwards.
-        if ( Input.GetKey( KeyCode.DownArrow ) == true ) { this.transform.position += this.transform.forward * Time.deltaTime * this.moveSpeed; }
-        if( Input.GetKey( KeyCode.UpArrow ) == true ) { this.transform.position -= this.transform.forward * Time.deltaTime * this.moveSpeed; }
+        if ( Input.GetKey( KeyCode.DownArrow ) == true ) { this.transform.position += this.transform.forward * Time.deltaTime * this.currentMoveSpeed; }
+        if( Input.GetKey( KeyCode.UpArrow ) == true ) { this.transform.position -= this.transform.forward * Time.deltaTime * this.currentMoveSpeed; }
 
         // Check left and right keys to rotate left and right.
-        if( Input.GetKey( KeyCode.LeftArrow ) == true ) { this.transform.Rotate( this.transform.up, Time.deltaTime * -this.turnSpeed ); }
-        if( Input.GetKey( KeyCode.RightArrow ) == true ) { this.transform.Rotate( this.transform.up, Time.deltaTime * this.turnSpeed ); }
+        if( Input.GetKey( KeyCode.LeftArrow ) == true ) { this.transform.Rotate( this.transform.up, Time.deltaTime * -this.currentTurnSpeed ); }
+        if( Input.GetKey( KeyCode.RightArrow ) == true ) { this.transform.Rotate( this.transform.up, Time.deltaTime * this.currentTurnSpeed ); }
 
         // Check spacebar to trigger jumping. Checks if vertical velocity (eg velocity.y) is near to zero.
         if( Input.GetKey( KeyCode.Space ) == true && Mathf.Abs( this.GetComponent<Rigidbody>().velocity.y ) < 0.01f )
@@ -120,7 +119,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Win
-        if (level > 2)
+        if (level > 3)
         {
             Debug.Log("Win");
         }
@@ -130,3 +129,30 @@ public class PlayerController : MonoBehaviour
     }
 }
 
+/* Psuedocode
+ * Begin
+ * Input moveSpeed, turnSpeed, jumpHeight, xp, xpForNextLevel, level, currentMoveSpeed, currentTurnSpeed, currentJumpHeight
+ * Using SetXpForNextLevel set xpForNextLevel
+ * Output message of xpForNextLevel
+ * Using SetCurrentMoveSpeed set currentMoveSpeed
+ * Output message of currentMoveSpeed
+ * Using SetCurrentTurnSpeed set currentTurnSpeed
+ * Output message of currentTurnSpeed
+ * Using SetCurrentJumpHeight set currentJumpHeight
+ * Output message of currentJumpHeight
+ * Set xp to 0
+ * Increase level by 1
+ * Output message of level
+ * Activate SetXpForNextLevel, SetCurrentMoveSpeed, SetCurrentTurnSpeed, SetCurrentJumpHeight
+ * Using GainXP, set xp to increase by xpToGain
+ * Output message of xpToGain, xp and xpForNextLevel
+ * On collide activate GainXP for amount specific to collided
+ * If xp is greater than or equal to xpForNextLevel activate LevelUp
+ * If Down Arrow key is pressed move object forward by the currentMoveSpeed
+ * If Up Arrow key is pressed move object backward by the currentMoveSpeed
+ * If Left Arrow key is pressed rotate object by the currentTurnSpeed
+ * If Right Arrow key is pressed rotate object by the currentTurnSpeed
+ * If Space key is pressed move object up on the y axis by the currentJumpHeight
+ * If level 3 or higher is reached 
+ * Output message "Win"
+*/
